@@ -25,6 +25,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--primary-font-family);
 }
 
 body {
@@ -38,8 +39,10 @@ body {
 
 main {
     width: 320px;
-    height: 610px;
-    background-color: red;
+    height: 550px;
+    /*background-color: red;*/
+    border-radius: 15px;
+    background-color: var(--neutral-very-dark-blue-card-bg);
 }
 
 .card {
@@ -51,7 +54,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 20px;
 }
 
 .card-info .main-img {
@@ -59,19 +62,56 @@ main {
     overflow: hidden;
     width: 100%;
     height: 300px;
+    position: relative;
+
+
+}
+.main-img .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 10px;
+    background-color: hsla(178, 100%, 50%, 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
+.main-img .overlay img{
+    width: 40px;
+    height: 40px;
+}
+.main-img:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
 .main-img img {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    border-radius: 10px;
+    z-index: 1;
+    position: relative;
 }
 
 .card-info .title {
+    color: var(--neutral-white);
+    font-weight: var(--large-font-weight);
+    font-family: var(--primary-font-family);
 
 }
-
+.card-info .title:hover {
+    color: var(--primary-cyan);
+    cursor: pointer;
+}
 .card-info .description {
+    color: var(--neutral-very-dark-blue-line);
+    font-size: 1rem;
 
 }
 
@@ -85,15 +125,30 @@ main {
 
 
 .price-info .value {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.price-info .value span {
+    color: var(--primary-cyan);
+    font-size: 14px;
+}
+.price-info .days-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.price-info .days-left {
-
+.price-info .days-left span {
+    font-size: 16px;
+    color: var(--neutral-very-dark-blue-line);
 }
 
 .line {
-
+    border-bottom: 1px solid var(--neutral-very-dark-blue-line);
+    width: 100%;
 }
 
 .profile-info {
@@ -101,6 +156,8 @@ main {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 .profile-info img {
     object-fit: cover;
@@ -109,6 +166,32 @@ main {
     border: 2px solid white;
     border-radius: 50%;
 }
-.price-info .creator-name {
+.profile-info .creator-name{
+    font-size: 16px;
+    color: var(--neutral-very-dark-blue-line);
+}
 
+.creator-name span {
+    font-size: 14px;
+    font-weight: var(--normal-font-weight);
+    color: var(--neutral-white);
+}
+.creator-name span:hover {
+    color: var(--primary-cyan);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 375px){
+    main {
+        height: 560px;
+    }
+    .card-info .title {
+        font-size: 1.5rem;
+    }
+
+    .card-info .description {
+        font-size: 17px;
+        /*color: var(--neutral-very-dark-blue-line);*/
+        font-weight: var(--small-font-weight);
+    }
 }
